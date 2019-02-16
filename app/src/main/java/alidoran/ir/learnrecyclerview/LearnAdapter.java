@@ -1,7 +1,6 @@
 package alidoran.ir.learnrecyclerview;
 
 import android.content.Context;
-import android.graphics.ColorSpace;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,8 +9,6 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -33,7 +30,7 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.ViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder (@NonNull ViewHolder viewHolder , final int i ) {
+    public void onBindViewHolder (@NonNull final ViewHolder viewHolder , int i ) {
         LearnModel learnModel = learnModelList.get ( i );
         viewHolder.txt_model.setText ( learnModel.getModel () );
 
@@ -41,7 +38,7 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.ViewHolder> 
         viewHolder.lin_model.setOnClickListener ( new View.OnClickListener ( ) {
             @Override
             public void onClick ( View v ) {
-                Toast.makeText ( myContext , i + "" , Toast.LENGTH_LONG ).show ();
+                Toast.makeText ( myContext , viewHolder.getAdapterPosition() + "" , Toast.LENGTH_LONG ).show ();
             }
         } );
     }
